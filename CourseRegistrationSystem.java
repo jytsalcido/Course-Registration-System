@@ -2,6 +2,8 @@ package homework1;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -20,6 +22,12 @@ public class CourseRegistrationSystem implements Serializable {
 		courses = new ArrayList<Course>();
 		students = new ArrayList<Student>();
 		admins = new ArrayList<Admin>();
+	}
+	
+	public void sortByEnrolled() {
+		Collections.sort(this.courses, new Comparator<Course>() {
+			public int compare(Course c1, Course c2) {
+				return Integer.compare(c1.getNumEnrolled(), c2.getNumEnrolled()); }});
 	}
 	
 	//main function running program

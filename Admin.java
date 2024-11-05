@@ -2,6 +2,7 @@ package homework1;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 interface Admins {
@@ -23,6 +24,10 @@ public class Admin extends User implements Admins {
 	//Constructor
 	public Admin(String username, String password, String firstName, String lastName, CourseRegistrationSystem crs) {
 		super(username, password, firstName, lastName, crs);
+	}
+	
+	public void sortByEnrolled() {
+		getCRS().sortByEnrolled();
 	}
 	
 	//Action menu when program is running
@@ -96,7 +101,7 @@ public class Admin extends User implements Admins {
 		do {
 			System.out.println("1. View all courses\n2. View all courses that are full\n3. Write to a file the list of courses that are full"
 					+ "\n4. View the names of the students being refistered in a specific course\n5. View the list of courses that a "
-					+ "given student is being registered on\n6. Exit\n\nSelection: ");
+					+ "given student is being registered on\n6. Sort courses by number of students registered\n7. Exit\n\nSelection: ");
 			
 			selection = scn.nextLine();
 			
@@ -118,6 +123,8 @@ public class Admin extends User implements Admins {
 				viewCoursesFor();
 				break;
 			case "6":
+				sortByEnrolled();
+			case "7":
 				proceed = true;
 				break;
 			default:
